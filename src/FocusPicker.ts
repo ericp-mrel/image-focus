@@ -161,8 +161,8 @@ export class FocusPicker {
 
   private calculateOffsetFromFocus() {
     const { width, height } = this.img.getBoundingClientRect();
-    const offsetX = width * (this.focus.x / 2 + 0.5);
-    const offsetY = height * (this.focus.y / -2 + 0.5);
+    const offsetX = width * this.focus.x;
+    const offsetY = height * this.focus.y;
     return { offsetX, offsetY };
   }
 
@@ -185,8 +185,8 @@ export class FocusPicker {
     // Calculate FocusPoint coordinates
     const offsetX = clientX - left;
     const offsetY = clientY - top;
-    const x = (offsetX / width - 0.5) * 2;
-    const y = (offsetY / height - 0.5) * -2;
+    const x = offsetX / width;
+    const y = offsetY / height;
 
     // TODO: Figure out an elegant way to use the setFocus API without
     // having to recalculate the offset from focus
